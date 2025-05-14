@@ -1,0 +1,112 @@
+/* Importa las capas base, componentes y utilidades de Tailwind CSS */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Define variables CSS personalizadas dentro de la capa base */
+@layer base {
+  :root {
+    /* Variables de colores en formato HSL para tema claro */
+    --background: 0 0% 100%; /* Blanco */
+    --foreground: 224 71.4% 4.1%; /* Azul oscuro / Negro */
+
+    --card: 0 0% 100%; /* Fondo de tarjetas blanco */
+    --card-foreground: 224 71.4% 4.1%; /* Texto de tarjetas oscuro */
+
+    --popover: 0 0% 100%; /* Fondo de popovers blanco */
+    --popover-foreground: 224 71.4% 4.1%; /* Texto de popovers oscuro */
+
+    --primary: 0 72.2% 50.6%; /* Color primario rojo */
+    --primary-foreground: 0 0% 98%; /* Texto claro para primario */
+
+    --secondary: 45 100% 50%; /* Color secundario amarillo/dorado */
+    --secondary-foreground: 224 71.4% 4.1%; /* Texto oscuro para secundario */
+
+    --muted: 220 14.3% 95.9%; /* Gris claro */
+    --muted-foreground: 220 8.9% 46.1%; /* Texto gris oscuro */
+
+    --accent: 220 14.3% 95.9%; /* Acento gris claro */
+    --accent-foreground: 220 71.4% 4.1%; /* Texto acento oscuro */
+
+    --destructive: 0 84.2% 60.2%; /* Color para acciones destructivas (rojo) */
+    --destructive-foreground: 0 0% 98%; /* Texto claro para destructivo */
+
+    --border: 220 13% 91%; /* Color para bordes */
+    --input: 220 13% 91%; /* Color para inputs */
+    --ring: 0 72.2% 50.6%; /* Color para anillos de foco (rojo) */
+
+    --radius: 0.5rem; /* Radio de bordes redondeados */
+  }
+
+  /* Variables para tema oscuro */
+  .dark {
+    --background: 224 71.4% 4.1%; /* Fondo oscuro */
+    --foreground: 0 0% 98%; /* Texto claro */
+
+    --card: 224 71.4% 4.1%; /* Tarjetas fondo oscuro */
+    --card-foreground: 0 0% 98%; /* Texto tarjetas claro */
+
+    --popover: 224 71.4% 4.1%; /* Popovers fondo oscuro */
+    --popover-foreground: 0 0% 98%; /* Texto popovers claro */
+
+    --primary: 0 62.8% 49.8%; /* Color primario rojo (oscuro) */
+    --primary-foreground: 0 0% 98%; /* Texto claro para primario */
+
+    --secondary: 45 90% 45%; /* Secundario amarillo/dorado oscuro */
+    --secondary-foreground: 0 0% 98%; /* Texto claro para secundario */
+
+    --muted: 220 14.3% 10.9%; /* Gris oscuro */
+    --muted-foreground: 220 8.9% 56.1%; /* Texto gris medio */
+
+    --accent: 220 14.3% 10.9%; /* Acento gris oscuro */
+    --accent-foreground: 0 0% 98%; /* Texto claro para acento */
+
+    --destructive: 0 62.8% 30.6%; /* Rojo destructivo oscuro */
+    --destructive-foreground: 0 0% 98%; /* Texto claro destructivo */
+
+    --border: 220 13% 21%; /* Bordes oscuros */
+    --input: 220 13% 21%; /* Inputs oscuros */
+    --ring: 0 62.8% 49.8%; /* Anillos foco oscuros */
+  }
+}
+
+/* Más reglas base para aplicar estilos globales */
+@layer base {
+  /* Aplica color de borde personalizado a todos los elementos */
+  * {
+    @apply border-border;
+  }
+  /* Estilo para el body: fondo y texto usando variables, y fuente */
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  /* Secciones con padding vertical adaptativo */
+  section {
+    @apply py-12 md:py-20;
+  }
+  /* Texto con efecto degradado */
+  .gradient-text {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary;
+  }
+}
+
+/* Personalización de la barra de scroll para navegadores WebKit */
+::-webkit-scrollbar {
+  width: 8px; /* Ancho de la barra */
+}
+::-webkit-scrollbar-track {
+  background: hsl(var(--muted)); /* Fondo del track (zona donde se mueve el thumb) */
+}
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--primary)); /* Color del "pulgar" que se arrastra */
+  border-radius: 4px; /* Bordes redondeados para el pulgar */
+}
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--primary) / 0.8); /* Color al pasar el cursor sobre el pulgar */
+}
+
+/* Hace que el desplazamiento de la página sea suave */
+html {
+  scroll-behavior: smooth;
+}
